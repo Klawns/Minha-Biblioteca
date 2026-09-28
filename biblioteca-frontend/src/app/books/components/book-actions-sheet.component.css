@@ -1,0 +1,13 @@
+.handle {
+  width: 2.25rem;
+  height: 0.25rem;
+  margin: 0.65rem auto 0.25rem;
+  border-radius: 99px;
+  background: #c3c9db;
+}
+.title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  padding: 0 1.25rem;
+}

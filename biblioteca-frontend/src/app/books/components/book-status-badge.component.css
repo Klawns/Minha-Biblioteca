@@ -1,0 +1,13 @@
+.badge {
+  display: inline-flex;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: var(--app-warning-bg);
+  color: var(--app-warning-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.badge.done {
+  background: var(--app-success-bg);
+  color: var(--app-success-text);
+}

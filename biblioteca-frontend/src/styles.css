@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+:root {
+  --app-bg: #f4f7ff;
+  --app-surface: #ffffff;
+  --app-text: #202534;
+  --app-muted: #5f687d;
+  --app-primary: #3f51b5;
+  --app-primary-dark: #283593;
+  --app-cyan: #008fa8;
+  --app-violet: #6a4bc3;
+  --app-success-bg: #e4f7ef;
+  --app-success-text: #12613f;
+  --app-warning-bg: #fff4d8;
+  --app-warning-text: #765400;
+  --app-error-bg: #ffebee;
+  --app-error-text: #9b1c31;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--app-bg); color: var(--app-text); font-family: Roboto, Arial, sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #00a7c4; outline-offset: 3px; }
+
+.book-actions-sheet { border-radius: 22px 22px 0 0; overflow: hidden; box-shadow: 0 -8px 30px #1d2c671f; }

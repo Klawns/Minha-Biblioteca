@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Editar informações</h2>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-dialog-content
+    ><mat-form-field appearance="outline"
+      ><mat-label>Título</mat-label
+      ><input matInput formControlName="title" autocomplete="off" /><mat-error
+        >Informe um título</mat-error
+      ></mat-form-field
+    ><mat-form-field appearance="outline"
+      ><mat-label>Status</mat-label
+      ><mat-select formControlName="status"
+        ><mat-option value="PENDING">Pendente</mat-option
+        ><mat-option value="COMPLETED">Concluído</mat-option></mat-select
+      ></mat-form-field
+    ></mat-dialog-content
+  ><mat-dialog-actions align="end"
+    ><button mat-button type="button" mat-dialog-close>Cancelar</button
+    ><button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+      Salvar
+    </button></mat-dialog-actions
+  >
+</form>

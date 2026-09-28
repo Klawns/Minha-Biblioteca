@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Ações do livro</h2>
+<mat-dialog-content
+  ><app-book-actions-list [book]="data" (selected)="select($event)"
+/></mat-dialog-content>
+<mat-dialog-actions align="end"
+  ><button mat-button mat-dialog-close>Fechar</button></mat-dialog-actions
+>

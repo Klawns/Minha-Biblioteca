@@ -1,0 +1,8 @@
+node_modules
+dist
+.angular
+.cache
+.git
+.gitignore
+*.log
+coverage

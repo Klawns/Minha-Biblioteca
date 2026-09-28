@@ -1,0 +1,14 @@
+<div role="menu" aria-label="Ações do livro">
+  <button mat-button role="menuitem" (click)="selected.emit('status')">
+    <mat-icon>{{
+      book().status === 'PENDING' ? 'check_circle' : 'radio_button_unchecked'
+    }}</mat-icon
+    >{{ book().status === 'PENDING' ? 'Marcar como concluído' : 'Marcar como pendente' }}
+  </button>
+  <button mat-button role="menuitem" (click)="selected.emit('edit')">
+    <mat-icon>edit</mat-icon>Editar informações
+  </button>
+  <button mat-button class="danger" role="menuitem" (click)="selected.emit('delete')">
+    <mat-icon>delete</mat-icon>Apagar livro
+  </button>
+</div>
