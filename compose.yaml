@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-mydatabase}
+      POSTGRES_USER: ${POSTGRES_USER:-myuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./biblioteca-backend
+    restart: unless-stopped
+    env_file:
+      - ./biblioteca-backend/.env
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-mydatabase}
+      DATABASE_USERNAME: ${POSTGRES_USER:-myuser}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+      APP_STORAGE_PROVIDER: r2
+      PERMANENT_DIRECTORY: /app/data/storage
+      TEMPORARY_DIRECTORY: /app/data/temp/book
+      COVER_DIRECTORY: /app/data/temp/cover
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - biblioteca-data:/app/data
+
+  frontend:
+    build:
+      context: ./biblioteca-frontend
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres-data:
+  biblioteca-data:
